@@ -1,0 +1,8 @@
+{
+  "data_default_viewers": ["data.default.viewers@osdu.group"],
+  "data_default_owners": ["data.default.owners@osdu.group"],
+  "legal_tags": ["OSDU-Sample-Legal-Tag"],
+  "legal_relevant_data_countries": ["US"],
+  "legal_status": "Compliant",
+  "data_partition_id": "osdu"
+}

@@ -1,0 +1,132 @@
+{
+    "acl": {
+        "owners": [
+            "data.default.owners@osdu.group"
+        ],
+        "viewers": [
+            "data.default.viewers@osdu.group"
+        ]
+    },
+    "data": {
+        "Curves": [
+            {
+                "CurveID": "DEPT",
+                "CurveUnit": "osdu:reference-data--UnitOfMeasure:m:",
+                "Mnemonic": "DEPT"
+            },
+            {
+                "CurveID": "FORCE_2020_LITHOFACIES_CONFIDENCE",
+                "CurveUnit": "osdu:reference-data--UnitOfMeasure:_:",
+                "Mnemonic": "FORCE_2020_LITHOFACIES_CONFIDENCE"
+            },
+            {
+                "CurveID": "FORCE_2020_LITHOFACIES_LITHOLOGY",
+                "CurveUnit": "osdu:reference-data--UnitOfMeasure:_:",
+                "Mnemonic": "FORCE_2020_LITHOFACIES_LITHOLOGY"
+            },
+            {
+                "CurveID": "CALI",
+                "CurveUnit": "osdu:reference-data--UnitOfMeasure:in:",
+                "Mnemonic": "CALI"
+            },
+            {
+                "CurveID": "BS",
+                "CurveUnit": "osdu:reference-data--UnitOfMeasure:in:",
+                "Mnemonic": "BS"
+            },
+            {
+                "CurveID": "DCAL",
+                "CurveUnit": "osdu:reference-data--UnitOfMeasure:in:",
+                "Mnemonic": "DCAL"
+            },
+            {
+                "CurveID": "MUDWEIGHT",
+                "CurveUnit": "osdu:reference-data--UnitOfMeasure:_:",
+                "Mnemonic": "MUDWEIGHT"
+            },
+            {
+                "CurveID": "ROP",
+                "CurveUnit": "osdu:reference-data--UnitOfMeasure:m%2Fh:",
+                "Mnemonic": "ROP"
+            },
+            {
+                "CurveID": "RDEP",
+                "CurveUnit": "osdu:reference-data--UnitOfMeasure:ohm.m:",
+                "Mnemonic": "RDEP"
+            },
+            {
+                "CurveID": "RSHA",
+                "CurveUnit": "osdu:reference-data--UnitOfMeasure:ohm.m:",
+                "Mnemonic": "RSHA"
+            },
+            {
+                "CurveID": "RMED",
+                "CurveUnit": "osdu:reference-data--UnitOfMeasure:ohm.m:",
+                "Mnemonic": "RMED"
+            },
+            {
+                "CurveID": "SP",
+                "CurveUnit": "osdu:reference-data--UnitOfMeasure:mV:",
+                "Mnemonic": "SP"
+            },
+            {
+                "CurveID": "DTC",
+                "CurveUnit": "osdu:reference-data--UnitOfMeasure:us%2Fft:",
+                "Mnemonic": "DTC"
+            },
+            {
+                "CurveID": "NPHI",
+                "CurveUnit": "osdu:reference-data--UnitOfMeasure:m3%2Fm3:",
+                "Mnemonic": "NPHI"
+            },
+            {
+                "CurveID": "GR",
+                "CurveUnit": "osdu:reference-data--UnitOfMeasure:gAPI:",
+                "Mnemonic": "GR"
+            },
+            {
+                "CurveID": "RHOB",
+                "CurveUnit": "osdu:reference-data--UnitOfMeasure:g%2Fcm3:",
+                "Mnemonic": "RHOB"
+            },
+            {
+                "CurveID": "DRHO",
+                "CurveUnit": "osdu:reference-data--UnitOfMeasure:g%2Fcm3:",
+                "Mnemonic": "DRHO"
+            },
+            {
+                "CurveID": "DEPTH_MD",
+                "CurveUnit": "osdu:reference-data--UnitOfMeasure:_:",
+                "Mnemonic": "DEPTH_MD"
+            },
+            {
+                "CurveID": "X_LOC",
+                "CurveUnit": "osdu:reference-data--UnitOfMeasure:_:",
+                "Mnemonic": "X_LOC"
+            },
+            {
+                "CurveID": "Y_LOC",
+                "CurveUnit": "osdu:reference-data--UnitOfMeasure:_:",
+                "Mnemonic": "Y_LOC"
+            },
+            {
+                "CurveID": "Z_LOC",
+                "CurveUnit": "osdu:reference-data--UnitOfMeasure:_:",
+                "Mnemonic": "Z_LOC"
+            }
+        ],
+        "ReferenceCurveID": "DEPT",
+        "WellboreID": "osdu:master-data--Wellbore:well-1234:"
+    },
+    "id": "well-1234-log",
+    "kind": "osdu:wks:work-product-component--WellLog:1.0.0",
+    "legal": {
+        "legaltags": [
+            "OSDU-Sample-Legal-Tag"
+        ],
+        "otherRelevantDataCountries": [
+            "US"
+        ],
+        "status": "Compliant"
+    }
+}

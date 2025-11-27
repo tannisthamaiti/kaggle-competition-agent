@@ -1,0 +1,30 @@
+{
+    "acl": {
+        "owners": [
+            "data.default.owners@osdu.group"
+        ],
+        "viewers": [
+            "data.default.viewers@osdu.group"
+        ]
+    },
+    "data": {
+        "FacilityName": "7/1-1",
+        "NameAliases": [
+            {
+                "AliasName": "7/1-1",
+                "AliasNameTypeID": "osdu:reference-data--AliasNameType:UniqueIdentifier:"
+            }
+        ]
+    },
+    "id": "well-5555",
+    "kind": "osdu:wks:master-data--Wellbore:1.0.0",
+    "legal": {
+        "legaltags": [
+            "OSDU-Sample-Legal-Tag"
+        ],
+        "otherRelevantDataCountries": [
+            "US"
+        ],
+        "status": "Compliant"
+    }
+}

@@ -1,0 +1,124 @@
+{
+  "enrichedCurves": [
+    {
+      "CurveID": "FORCE_2020_LITHOFACIES_CONFIDENCE",
+      "Mnemonic": "FORCE_2020_LITHOFACIES_CONFIDENCE",
+      "CurveUnit": "osdu:reference-data--UnitOfMeasure:_:",
+      "description": "This curve indicates the confidence level of a machine-generated lithofacies interpretation, with values typically representing high, medium, or low confidence. It is used in machine learning models to weigh the importance of interpretations during training."
+    },
+    {
+      "CurveID": "FORCE_2020_LITHOFACIES_LITHOLOGY",
+      "Mnemonic": "FORCE_2020_LITHOFACIES_LITHOLOGY",
+      "CurveUnit": "osdu:reference-data--UnitOfMeasure:_:",
+      "description": "This curve represents a machine-predicted lithology or lithofacies classification for a given depth in a well. It is used in machine learning competitions and petrophysical analysis to identify the rock type based on well log data."
+    },
+    {
+      "CurveID": "CALI",
+      "Mnemonic": "CALI",
+      "CurveUnit": "osdu:reference-data--UnitOfMeasure:in:",
+      "description": "The Caliper log measures the diameter of the borehole. It is used to identify variations in borehole size, which can indicate washouts, mudcake buildup, or the type of formation being drilled."
+    },
+    {
+      "CurveID": "BS",
+      "Mnemonic": "BS",
+      "CurveUnit": "osdu:reference-data--UnitOfMeasure:in:",
+      "description": "BS typically stands for Bit Size, which is the diameter of the drill bit used. This measurement is important for understanding borehole conditions and can be related to caliper logs."
+    },
+    {
+      "CurveID": "DCAL",
+      "Mnemonic": "DCAL",
+      "CurveUnit": "osdu:reference-data--UnitOfMeasure:in:",
+      "description": "The Differential Caliper log measures the distance between the tool sensor and the borehole wall, providing a detailed indication of borehole conditions and quality."
+    },
+    {
+      "CurveID": "MUDWEIGHT",
+      "Mnemonic": "MUDWEIGHT",
+      "CurveUnit": "osdu:reference-data--UnitOfMeasure:_:",
+      "description": "Mud weight refers to the density of the drilling fluid. It is a critical parameter in drilling operations, influencing wellbore stability and pressure control."
+    },
+    {
+      "CurveID": "ROP",
+      "Mnemonic": "ROP",
+      "CurveUnit": "osdu:reference-data--UnitOfMeasure:m%2Fh:",
+      "description": "The Rate of Penetration (ROP) measures how quickly the drill bit advances through the rock. It is used to assess drilling performance, optimize operations, and can indirectly indicate lithology."
+    },
+    {
+      "CurveID": "RDEP",
+      "Mnemonic": "RDEP",
+      "CurveUnit": "osdu:reference-data--UnitOfMeasure:ohm.m:",
+      "description": "The Deep Resistivity log measures the electrical resistivity of the formation at a greater depth of investigation. It is used to identify hydrocarbon-bearing zones and determine water saturation."
+    },
+    {
+      "CurveID": "RSHA",
+      "Mnemonic": "RSHA",
+      "CurveUnit": "osdu:reference-data--UnitOfMeasure:ohm.m:",
+      "description": "The Shallow Resistivity log measures the electrical resistivity of the formation close to the borehole wall. It is primarily used to evaluate the flushed zone and can indicate hydrocarbon saturation."
+    },
+    {
+      "CurveID": "RMED",
+      "Mnemonic": "RMED",
+      "CurveUnit": "osdu:reference-data--UnitOfMeasure:ohm.m:",
+      "description": "The Medium Resistivity log measures electrical resistivity at an intermediate depth of investigation between shallow and deep resistivity logs. It helps in delineating formation properties and fluid content."
+    },
+    {
+      "CurveID": "SP",
+      "Mnemonic": "SP",
+      "CurveUnit": "osdu:reference-data--UnitOfMeasure:mV:",
+      "description": "The Spontaneous Potential (SP) log measures natural electrical potentials in the borehole, primarily used to distinguish permeable formations (like sandstones) from impermeable ones (like shales)."
+    },
+    {
+      "CurveID": "DTC",
+      "Mnemonic": "DTC",
+      "CurveUnit": "osdu:reference-data--UnitOfMeasure:us%2Fft:",
+      "description": "The Delta-T Compressional (DTC) log measures the time it takes for a compressional sound wave to travel through a formation. It is used for porosity calculations and lithology identification."
+    },
+    {
+      "CurveID": "NPHI",
+      "Mnemonic": "NPHI",
+      "CurveUnit": "osdu:reference-data--UnitOfMeasure:m3%2Fm3:",
+      "description": "The Neutron Porosity (NPHI) log measures the hydrogen concentration in a formation, which is primarily related to the pore spaces. It is used to estimate porosity and identify lithology and fluid types."
+    },
+    {
+      "CurveID": "GR",
+      "Mnemonic": "GR",
+      "CurveUnit": "osdu:reference-data--UnitOfMeasure:gAPI:",
+      "description": "The Gamma Ray (GR) log measures the natural radioactivity of formations, primarily indicating clay and shale content. It is widely used for lithology identification and correlation between wells."
+    },
+    {
+      "CurveID": "RHOB",
+      "Mnemonic": "RHOB",
+      "CurveUnit": "osdu:reference-data--UnitOfMeasure:g%2Fcm3:",
+      "description": "The Bulk Density (RHOB) log measures the density of the formation, including pore spaces and fluids. It is used to calculate porosity, identify lithology, and detect gas."
+    },
+    {
+      "CurveID": "DRHO",
+      "Mnemonic": "DRHO",
+      "CurveUnit": "osdu:reference-data--UnitOfMeasure:g%2Fcm3:",
+      "description": "The Density Correction (DRHO) log provides a correction factor for the bulk density measurement, indicating the quality of the density data, especially in relation to borehole conditions."
+    },
+    {
+      "CurveID": "DEPTH_MD",
+      "Mnemonic": "DEPTH_MD",
+      "CurveUnit": "osdu:reference-data--UnitOfMeasure:_:",
+      "description": "Depth Measured Depth (DEPTH_MD) represents the measured depth from the surface to a specific point in the wellbore. It is a fundamental reference for all log data."
+    },
+    {
+      "CurveID": "X_LOC",
+      "Mnemonic": "X_LOC",
+      "CurveUnit": "osdu:reference-data--UnitOfMeasure:_:",
+      "description": "X_LOC represents the X-coordinate location of the wellbore. It is used for spatial referencing and mapping."
+    },
+    {
+      "CurveID": "Y_LOC",
+      "Mnemonic": "Y_LOC",
+      "CurveUnit": "osdu:reference-data--UnitOfMeasure:_:",
+      "description": "Y_LOC represents the Y-coordinate location of the wellbore. It is used for spatial referencing and mapping."
+    },
+    {
+      "CurveID": "Z_LOC",
+      "Mnemonic": "Z_LOC",
+      "CurveUnit": "osdu:reference-data--UnitOfMeasure:_:",
+      "description": "Z_LOC represents the Z-coordinate location (depth) of the wellbore. It is used for spatial referencing and mapping."
+    }
+  ]
+}

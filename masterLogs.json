@@ -1,0 +1,128 @@
+[
+  {
+    "CurveID": "RDEP",
+    "Mnemonic": "RDEP",
+    "CurveUnit": "osdu:reference-data--UnitOfMeasure:OHM.M:",
+    "Description": "Deep Reading Resistivity measurement"
+  },
+  {
+    "CurveID": "RSHA",
+    "Mnemonic": "RSHA",
+    "CurveUnit": "osdu:reference-data--UnitOfMeasure:OHM.M:",
+    "Description": "Shallow Reading Resistivity measurement"
+  },
+  {
+    "CurveID": "RMED",
+    "Mnemonic": "RMED",
+    "CurveUnit": "osdu:reference-data--UnitOfMeasure:OHM.M:",
+    "Description": "Medium Deep Reading Resistivity measurement"
+  },
+  {
+    "CurveID": "RXO",
+    "Mnemonic": "RXO",
+    "CurveUnit": "osdu:reference-data--UnitOfMeasure:OHM.M:",
+    "Description": "Flushed Zone Resistivity measurement"
+  },
+  {
+    "CurveID": "RMIC",
+    "Mnemonic": "RMIC",
+    "CurveUnit": "osdu:reference-data--UnitOfMeasure:OHM.M:",
+    "Description": "Micro Resistivity measurement"
+  },
+  {
+    "CurveID": "SP",
+    "Mnemonic": "SP",
+    "CurveUnit": "osdu:reference-data--UnitOfMeasure:mV:",
+    "Description": "Self Potential Log"
+  },
+  {
+    "CurveID": "DTS",
+    "Mnemonic": "DTS",
+    "CurveUnit": "osdu:reference-data--UnitOfMeasure:us%2Fft:",
+    "Description": "Shear wave sonic log (us/ft)"
+  },
+  {
+    "CurveID": "DTC",
+    "Mnemonic": "DTC",
+    "CurveUnit": "osdu:reference-data--UnitOfMeasure:us%2Fft:",
+    "Description": "Compressional waves sonic log (us/ft)"
+  },
+  {
+    "CurveID": "NPHI",
+    "Mnemonic": "NPHI",
+    "CurveUnit": "osdu:reference-data--UnitOfMeasure:m3%2Fm3:",
+    "Description": "Neutron Porosity log"
+  },
+  {
+    "CurveID": "PEF",
+    "Mnemonic": "PEF",
+    "CurveUnit": "osdu:reference-data--UnitOfMeasure:b%2Fe:",
+    "Description": "Photo Electric Factor log"
+  },
+  {
+    "CurveID": "GR",
+    "Mnemonic": "GR",
+    "CurveUnit": "osdu:reference-data--UnitOfMeasure:gAPI:",
+    "Description": "Gamma Ray Log"
+  },
+  {
+    "CurveID": "RHOB",
+    "Mnemonic": "RHOB",
+    "CurveUnit": "osdu:reference-data--UnitOfMeasure:g%2Fcm3:",
+    "Description": "Bulk Density Log"
+  },
+  {
+    "CurveID": "DRHO",
+    "Mnemonic": "DRHO",
+    "CurveUnit": "osdu:reference-data--UnitOfMeasure:g%2Fcm3:",
+    "Description": "Density Correction log"
+  },
+  {
+    "CurveID": "CALI",
+    "Mnemonic": "CALI",
+    "CurveUnit": "osdu:reference-data--UnitOfMeasure:in:",
+    "Description": "Caliper log"
+  },
+  {
+    "CurveID": "BS",
+    "Mnemonic": "BS",
+    "CurveUnit": "osdu:reference-data--UnitOfMeasure:in:",
+    "Description": "Borehole Size"
+  },
+  {
+    "CurveID": "DCAL",
+    "Mnemonic": "DCAL",
+    "CurveUnit": "osdu:reference-data--UnitOfMeasure:in:",
+    "Description": "Differential Caliper log"
+  },
+  {
+    "CurveID": "ROPA",
+    "Mnemonic": "ROPA",
+    "CurveUnit": "osdu:reference-data--UnitOfMeasure:_:",
+    "Description": "Average Rate of Penetration"
+  },
+  {
+    "CurveID": "SGR",
+    "Mnemonic": "SGR",
+    "CurveUnit": "osdu:reference-data--UnitOfMeasure:gAPI:",
+    "Description": "Spectra Gamma Ray log"
+  },
+  {
+    "CurveID": "MUDWEIGHT",
+    "Mnemonic": "MUDWEIGHT",
+    "CurveUnit": "osdu:reference-data--UnitOfMeasure:_:",
+    "Description": "Weight of Drilling Mud"
+  },
+  {
+    "CurveID": "ROP",
+    "Mnemonic": "ROP",
+    "CurveUnit": "osdu:reference-data--UnitOfMeasure:m%2Fh:",
+    "Description": "Rate of Penetration"
+  },
+  {
+    "CurveID": "DEPTH",
+    "Mnemonic": "DEPTH",
+    "CurveUnit": "osdu:reference-data--UnitOfMeasure:m:",
+    "Description": "Measured Depth"
+  }
+]
