@@ -3,102 +3,102 @@
     "CurveID": "FORCE_2020_LITHOFACIES_CONFIDENCE",
     "Mnemonic": "FORCE_2020_LITHOFACIES_CONFIDENCE",
     "CurveUnit": "osdu:reference-data--UnitOfMeasure:_:",
-    "Description": "This curve indicates the confidence level of a machine-generated lithofacies interpretation, with values typically representing high, medium, or low confidence. It is used in machine learning models to weigh the importance of interpretations during training."
+    "Description": "This curve represents the confidence level assigned by an interpreter to a lithofacies classification. It is typically scored on a scale (e.g., 1 for high confidence, 3 for low confidence) and can be used to weigh or filter data during analysis."
   },
   {
     "CurveID": "FORCE_2020_LITHOFACIES_LITHOLOGY",
     "Mnemonic": "FORCE_2020_LITHOFACIES_LITHOLOGY",
     "CurveUnit": "osdu:reference-data--UnitOfMeasure:_:",
-    "Description": "This curve represents a machine-predicted lithology or lithofacies classification for a given depth in a well. It is used in machine learning competitions and petrophysical analysis to identify the rock type based on well log data."
+    "Description": "This curve provides a machine-predicted or interpreted lithofacies class label for a given depth. It is used in machine learning competitions for predicting lithology based on well log data."
   },
   {
     "CurveID": "CALI",
     "Mnemonic": "CALI",
     "CurveUnit": "osdu:reference-data--UnitOfMeasure:in:",
-    "Description": "The Caliper log measures the diameter of the borehole. It is used to identify variations in borehole size, which can indicate washouts, mudcake buildup, or the type of formation being drilled."
+    "Description": "The Caliper log measures the diameter of the borehole. It is used to detect variations in the borehole size, such as washouts or enlargements, which can indicate different lithologies or borehole conditions."
   },
   {
     "CurveID": "BS",
     "Mnemonic": "BS",
     "CurveUnit": "osdu:reference-data--UnitOfMeasure:in:",
-    "Description": "BS typically stands for Bit Size, which is the diameter of the drill bit used. This measurement is important for understanding borehole conditions and can be related to caliper logs."
+    "Description": "The Bit Size (BS) log records the diameter of the drill bit used. It is essential for understanding borehole conditions and can be compared with caliper logs to identify wellbore enlargements or washouts."
   },
   {
     "CurveID": "DCAL",
     "Mnemonic": "DCAL",
     "CurveUnit": "osdu:reference-data--UnitOfMeasure:in:",
-    "Description": "The Differential Caliper log measures the distance between the tool sensor and the borehole wall, providing a detailed indication of borehole conditions and quality."
+    "Description": "The Differential Caliper (DCAL) log measures the distance between the tool sensor and the borehole wall, providing a sensitive indicator of borehole conditions and quality of other log measurements."
   },
   {
     "CurveID": "MUDWEIGHT",
     "Mnemonic": "MUDWEIGHT",
     "CurveUnit": "osdu:reference-data--UnitOfMeasure:_:",
-    "Description": "Mud weight refers to the density of the drilling fluid. It is a critical parameter in drilling operations, influencing wellbore stability and pressure control."
+    "Description": "Mud weight, or mud density, is a critical drilling fluid property that controls formation pressure and contributes to wellbore stability. It is measured in units like pounds per gallon (PPG) or grams per milliliter (g/ml)."
   },
   {
     "CurveID": "ROP",
     "Mnemonic": "ROP",
     "CurveUnit": "osdu:reference-data--UnitOfMeasure:m%2Fh:",
-    "Description": "The Rate of Penetration (ROP) measures how quickly the drill bit advances through the rock. It is used to assess drilling performance, optimize operations, and can indirectly indicate lithology."
+    "Description": "The Rate of Penetration (ROP) measures how quickly the drill bit is advancing through rock formations, typically in meters per hour (m/h) or feet per hour. It provides insights into drilling efficiency, formation hardness, and can aid in lithology identification."
   },
   {
     "CurveID": "RDEP",
     "Mnemonic": "RDEP",
     "CurveUnit": "osdu:reference-data--UnitOfMeasure:ohm.m:",
-    "Description": "The Deep Resistivity log measures the electrical resistivity of the formation at a greater depth of investigation. It is used to identify hydrocarbon-bearing zones and determine water saturation."
+    "Description": "Deep Resistivity (RDEP) logs measure the electrical resistivity of the formation at a greater depth of investigation. This deep reading helps in identifying hydrocarbon-bearing zones and calculating water saturation."
   },
   {
     "CurveID": "RSHA",
     "Mnemonic": "RSHA",
     "CurveUnit": "osdu:reference-data--UnitOfMeasure:ohm.m:",
-    "Description": "The Shallow Resistivity log measures the electrical resistivity of the formation close to the borehole wall. It is primarily used to evaluate the flushed zone and can indicate hydrocarbon saturation."
+    "Description": "Shallow Resistivity (RSHA) logs measure the electrical resistivity of the formation closer to the borehole wall, in the flushed zone. This is often referred to as a micro-resistivity log and is influenced by borehole fluids."
   },
   {
     "CurveID": "RMED",
     "Mnemonic": "RMED",
     "CurveUnit": "osdu:reference-data--UnitOfMeasure:ohm.m:",
-    "Description": "The Medium Resistivity log measures electrical resistivity at an intermediate depth of investigation between shallow and deep resistivity logs. It helps in delineating formation properties and fluid content."
+    "Description": "Medium Resistivity (RMED) logs provide an intermediate depth of investigation between shallow and deep resistivity logs. This measurement helps in a more comprehensive analysis of formation fluids and lithology."
   },
   {
     "CurveID": "SP",
     "Mnemonic": "SP",
     "CurveUnit": "osdu:reference-data--UnitOfMeasure:mV:",
-    "Description": "The Spontaneous Potential (SP) log measures natural electrical potentials in the borehole, primarily used to distinguish permeable formations (like sandstones) from impermeable ones (like shales)."
+    "Description": "The Spontaneous Potential (SP) log measures natural electrical potentials in the borehole. It is used to identify permeable rock layers and distinguish them from impermeable layers like shale, and can also help determine formation water resistivity."
   },
   {
     "CurveID": "DTC",
     "Mnemonic": "DTC",
     "CurveUnit": "osdu:reference-data--UnitOfMeasure:us%2Fft:",
-    "Description": "The Delta-T Compressional (DTC) log measures the time it takes for a compressional sound wave to travel through a formation. It is used for porosity calculations and lithology identification."
+    "Description": "The Compressional Travel Time (DTC) log measures the time it takes for a compressional sound wave to travel through a formation. It is used to determine porosity, elastic properties, and lithology."
   },
   {
     "CurveID": "NPHI",
     "Mnemonic": "NPHI",
     "CurveUnit": "osdu:reference-data--UnitOfMeasure:m3%2Fm3:",
-    "Description": "The Neutron Porosity (NPHI) log measures the hydrogen concentration in a formation, which is primarily related to the pore spaces. It is used to estimate porosity and identify lithology and fluid types."
+    "Description": "Neutron Porosity (NPHI) logs measure the hydrogen content in a formation, which is then converted to an apparent porosity value. It is primarily used to identify potential hydrocarbon zones and calculate porosity."
   },
   {
     "CurveID": "GR",
     "Mnemonic": "GR",
     "CurveUnit": "osdu:reference-data--UnitOfMeasure:gAPI:",
-    "Description": "The Gamma Ray (GR) log measures the natural radioactivity of formations, primarily indicating clay and shale content. It is widely used for lithology identification and correlation between wells."
+    "Description": "The Gamma Ray (GR) log measures the natural radioactivity of formations, which is primarily emitted by shales and clays. It is used to distinguish between shales and non-shales, aiding in lithology identification."
   },
   {
     "CurveID": "RHOB",
     "Mnemonic": "RHOB",
     "CurveUnit": "osdu:reference-data--UnitOfMeasure:g%2Fcm3:",
-    "Description": "The Bulk Density (RHOB) log measures the density of the formation, including pore spaces and fluids. It is used to calculate porosity, identify lithology, and detect gas."
+    "Description": "The Bulk Density (RHOB) log measures the overall density of the formation, including solids and fluids. It is used to calculate porosity and identify lithology, with higher densities often indicating tighter formations."
   },
   {
     "CurveID": "DRHO",
     "Mnemonic": "DRHO",
     "CurveUnit": "osdu:reference-data--UnitOfMeasure:g%2Fcm3:",
-    "Description": "The Density Correction (DRHO) log provides a correction factor for the bulk density measurement, indicating the quality of the density data, especially in relation to borehole conditions."
+    "Description": "The Density Correction (DRHO) log indicates the magnitude of correction applied to density measurements, often related to borehole conditions. Values outside a certain range can suggest unreliable density data."
   },
   {
     "CurveID": "DEPTH",
-    "Mnemonic": "DEPTH_MD",
-    "CurveUnit": "osdu:reference-data--UnitOfMeasure:_:",
-    "Description": "Depth Measured Depth (DEPTH_MD) represents the measured depth from the surface to a specific point in the wellbore. It is a fundamental reference for all log data."
+    "Mnemonic": "DEPTH",
+    "CurveUnit": "osdu:reference-data--UnitOfMeasure:m:",
+    "Description": "Measured Depth"
   }
 ]

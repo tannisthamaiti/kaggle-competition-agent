@@ -1,144 +1,147 @@
-# ==============================================================================
-# 1. ADK and Utility Imports
-# ==============================================================================
 import os
 import json
 import re
 import time
+import asyncio
+import argparse
+import uuid
 from dotenv import load_dotenv
 from google.genai import types
-import asyncio
-import argparse 
 
-# Import necessary ADK components
 from google.adk.agents import LlmAgent
 from google.adk.models.google_llm import Gemini
-from google.adk.runners import InMemoryRunner
+from google.adk.runners import Runner
+from google.adk.sessions import DatabaseSessionService
+from google.adk.apps.app import App, EventsCompactionConfig
 
-# ==============================================================================
-# 2. Environment Setup
-# ==============================================================================
 load_dotenv()
-
 output_filename = "merged_output.json"
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
-if not GEMINI_API_KEY:
-    raise ValueError("GEMINI_API_KEY environment variable not set.")
-
 os.environ["GOOGLE_API_KEY"] = GEMINI_API_KEY
 
-# ==============================================================================
-# 3. Configure Model & Retry Options
-# ==============================================================================
-http_retry_config = types.HttpRetryOptions(
-    attempts=5,
-    exp_base=2,
-    initial_delay=1,
-    http_status_codes=[429, 500, 503, 504],
-)
-
+http_retry_config = types.HttpRetryOptions(attempts=5, exp_base=2, initial_delay=1, http_status_codes=[429, 500, 503])
 MAX_JSON_RETRIES = 3
 
-# ==============================================================================
-# 4. Helper Function: Clean JSON
-# ==============================================================================
+# [FIXED FUNCTION] - Handles Lists [] and Objects {}
 def clean_json_text(text: str) -> str:
-    match = re.search(r'```(?:json)?\s*({.*})\s*```', text, re.DOTALL)
+    """
+    Robustly extracts JSON from Markdown. 
+    Handles both objects {...} and lists [...].
+    """
+    # 1. Regex Match: Looks for ```json ... ``` containing [ or {
+    # The [\[{] part means "match either '[' or '{'"
+    match = re.search(r'```(?:json)?\s*([\[{].*?[\]}])\s*```', text, re.DOTALL)
     if match:
         return match.group(1)
-    return text.strip()
-
-# ==============================================================================
-# 5. Define the ADK Agent
-# ==============================================================================
+    
+    # 2. Manual Fallback: If regex fails (e.g. malformed ending), try stripping tags manually
+    cleaned = text.strip()
+    
+    # Remove start tag
+    if cleaned.startswith("```json"):
+        cleaned = cleaned[7:].strip()
+    elif cleaned.startswith("```"):
+        cleaned = cleaned[3:].strip()
+    
+    # Remove end tag
+    if cleaned.endswith("```"):
+        cleaned = cleaned[:-3].strip()
+        
+    return cleaned
 
 def create_merge_agent(system_prompt: str) -> LlmAgent:
-    """Creates the ADK LlmAgent optimized for merging two datasets."""
-    
-    merge_agent = LlmAgent(
+    return LlmAgent(
         name="MergeSpecialistAgent",
         model=Gemini(
             model="gemini-2.5-flash-lite", 
             retry_options=http_retry_config,
-            # CRITICAL: Forces JSON output
-            generation_config={
-                "response_mime_type": "application/json"
-            }
+            generation_config={"response_mime_type": "application/json"}
         ), 
         instruction=system_prompt,
-        tools=[], # No search tool needed for internal merging
+        tools=[], 
     )
+
+async def main(master_path: str, child_path: str, session_id: str):
     
-    return merge_agent
-
-# ==============================================================================
-# 6. Main Execution using ADK Runner
-# ==============================================================================
-async def main(master_path: str, child_path: str):
-    
-    # 1. Load System Prompt
+    # 1. Load and Validate Inputs
     try:
-        with open("merge_system_prompt.md", "r") as f:
-            system_prompt_content = f.read()
+        with open("merge_system_prompt.md", "r") as f: system_prompt_content = f.read()
     except FileNotFoundError:
-        print("Error: merge_system_prompt.md not found.")
+        print("❌ Error: merge_system_prompt.md not found.")
         return
 
-    # 2. Load Master Log
     try:
-        with open(master_path, "r") as f:
-            master_content = f.read()
-    except FileNotFoundError:
-        print(f"Error: Master file '{master_path}' not found.")
+        with open(master_path, "r") as f: master_content = f.read()
+        with open(child_path, "r") as f: child_content = f.read()
+        
+        if not master_content.strip() or not child_content.strip():
+            print("❌ Error: Input files (master or child) are empty.")
+            return
+
+    except FileNotFoundError as e:
+        print(f"❌ Error loading data files: {e}")
         return
 
-    # 3. Load Child Data
-    try:
-        with open(child_path, "r") as f:
-            child_content = f.read()
-    except FileNotFoundError:
-        print(f"Error: Child file '{child_path}' not found.")
-        return
+    # 2. Config & Persistence
+    compaction_config = EventsCompactionConfig(compaction_interval=2, overlap_size=1)
+    db_url = "sqlite:///osdu_pipeline.db"
+    session_service = DatabaseSessionService(db_url=db_url)
 
-    # 4. Construct the Combined Message
-    user_message = (
+    # 3. Init App/Runner
+    APP_NAME = "merge_app"
+    agent = create_merge_agent(system_prompt_content)
+    app = App(name=APP_NAME, root_agent=agent, events_compaction_config=compaction_config)
+    runner = Runner(app=app, session_service=session_service)
+
+    # 4. Create Session Explicitly
+    try:
+        await session_service.create_session(app_name=APP_NAME, user_id="osdu_user", session_id=session_id)
+        print(f"✅ Session Created: {session_id}")
+    except Exception:
+        pass 
+
+    current_text = (
         f"Please merge the following two datasets based on the system instructions.\n\n"
         f"--- MASTER LOG ---\n{master_content}\n\n"
         f"--- CHILD DATA ---\n{child_content}"
     )
     
-    # 5. THE RETRY LOOP
+    print(f"🚀 Starting Merge Agent (Session: {session_id})...")
+    
     for attempt in range(1, MAX_JSON_RETRIES + 1):
         print(f"\n--- Attempt {attempt}/{MAX_JSON_RETRIES} ---")
-        
-        agent = create_merge_agent(system_prompt_content)
-        runner = InMemoryRunner(agent=agent)
+
+        current_message = types.Content(role="user", parts=[types.Part(text=current_text)])
 
         try:
             print("🤖 Merge Agent is processing...")
-            response = await runner.run_debug(user_message)
-            
-            # Extract Response
-            final_event = response[-1]
             raw_text = ""
+            
+            async for event in runner.run_async(user_id="osdu_user", session_id=session_id, new_message=current_message):
+                if event.content and event.content.parts:
+                    for part in event.content.parts:
+                        if part.text: 
+                            raw_text += part.text
+                        elif part.function_call: 
+                            raw_text += json.dumps(part.function_call.args)
+                
+            # Check for empty response
+            if not raw_text.strip():
+                print("⚠️ Warning: Model returned empty response.")
+                # Try to extract from previous turns or just retry
+                time.sleep(2)
+                continue
 
-            if final_event.content and final_event.content.parts:
-                final_part = final_event.content.parts[0]
-                if final_part.text:
-                    raw_text = final_part.text
-                elif final_part.function_call and final_part.function_call.args:
-                    raw_text = json.dumps(final_part.function_call.args, indent=4)
-                else:
-                    raw_text = str(final_event)
-            else:
-                raw_text = str(final_event)
+            # [DEBUG] Print the first 50 chars to verify cleanup works
+            # print(f"DEBUG Raw Start: {repr(raw_text[:50])}")
 
-            # Clean and Parse
             cleaned_json_string = clean_json_text(raw_text)
+            
+            # print(f"DEBUG Cleaned Start: {repr(cleaned_json_string[:50])}")
+
             json_obj = json.loads(cleaned_json_string)
             
             print("✅ Valid JSON generated.")
-            
             with open(output_filename, "w", encoding="utf-8") as f:
                 json.dump(json_obj, f, indent=2)
             print(f"✅ Successfully saved merged data to {output_filename}")
@@ -146,12 +149,15 @@ async def main(master_path: str, child_path: str):
 
         except json.JSONDecodeError as e:
             print(f"⚠️ JSON Parse Error on attempt {attempt}: {e}")
+            # print(f"   (Partial Content: {raw_text[:100]}...)") 
+            current_text = f"Previous attempt failed with JSON error: {e}. Please correct syntax (ensure no markdown) and return valid JSON."
             time.sleep(2)
             continue 
         
         except Exception as e:
             print(f"❌ Unexpected Error on attempt {attempt}: {e}")
-            return
+            time.sleep(2)
+            continue
 
     print("\n❌ Failed to generate valid JSON after max retries.")
 
@@ -161,4 +167,5 @@ if __name__ == "__main__":
     parser.add_argument("child_file", help="Path to the Child Data JSON")
     args = parser.parse_args()
 
-    asyncio.run(main(args.master_file, args.child_file))
+    DUMMY_SESSION = f"merge-manual-{str(uuid.uuid4())[:8]}"
+    asyncio.run(main(args.master_file, args.child_file, DUMMY_SESSION))
